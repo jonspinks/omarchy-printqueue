@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "blacksheep.printqueue",
+  "name": "Print Queue",
+  "version": "1.0.0",
+  "author": "Jon",
+  "license": "MIT",
+  "description": "Is it printing? A printer shows up in your bar while something's printing, turns red when it needs paper, and disappears when it's done.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Print Queue",
+    "description": "Hidden normally. Shows a printer with the job count while CUPS has unfinished jobs; red when a job is stuck or the printer needs you. Hover for each job, click to manage the queue.",
+    "category": "System",
+    "aliases": [
+      "printqueue",
+      "print-queue",
+      "printing",
+      "cups"
+    ],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "interval": 5
+    },
+    "schema": [
+      {
+        "key": "interval",
+        "type": "number",
+        "label": "Check interval",
+        "description": "Seconds between checks while the queue is empty (every 2 seconds while there are jobs)"
+      }
+    ]
+  }
+}

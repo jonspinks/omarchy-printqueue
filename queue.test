@@ -1,0 +1,35 @@
+# Asked of the local CUPS server by BarWidget.qml: ipptool -c ipp://localhost/ queue.test
+# Every job not yet finished, any user (names of other users' jobs stay hidden
+# by CUPS), and every printer's state. -c prints each as a CSV table.
+{
+  NAME "jobs"
+  OPERATION Get-Jobs
+  GROUP operation-attributes-tag
+  ATTR charset attributes-charset utf-8
+  ATTR naturalLanguage attributes-natural-language en
+  ATTR uri printer-uri $uri
+  ATTR name requesting-user-name $user
+  ATTR keyword which-jobs not-completed
+  ATTR boolean my-jobs false
+  ATTR keyword requested-attributes job-id,job-name,job-state,job-state-reasons,job-printer-uri,job-originating-user-name,job-k-octets
+  DISPLAY job-id
+  DISPLAY job-name
+  DISPLAY job-state
+  DISPLAY job-state-reasons
+  DISPLAY job-printer-uri
+  DISPLAY job-originating-user-name
+  DISPLAY job-k-octets
+}
+{
+  NAME "printers"
+  OPERATION CUPS-Get-Printers
+  GROUP operation-attributes-tag
+  ATTR charset attributes-charset utf-8
+  ATTR naturalLanguage attributes-natural-language en
+  ATTR keyword requested-attributes printer-name,printer-state,printer-state-reasons,printer-state-message,printer-info
+  DISPLAY printer-name
+  DISPLAY printer-state
+  DISPLAY printer-state-reasons
+  DISPLAY printer-state-message
+  DISPLAY printer-info
+}
